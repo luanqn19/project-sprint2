@@ -1,0 +1,20 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://media.wired.com/photos/5ffe4c4bc4dbf8ce4db6dbb9/master/pass/Gear-Best-of-CES-Feature.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.none-line{
+  text-decoration: none;
+}
+
+.center-div{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
