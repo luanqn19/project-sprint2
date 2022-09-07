@@ -3,7 +3,6 @@
     <!-- The image half -->
     <div class="col-md-7 d-none d-md-flex bg-image"></div>
 
-
     <!-- The content half -->
     <div class="col-md-5 bg-light">
       <div class="login d-flex align-items-center py-5">
@@ -15,13 +14,13 @@
               <div class="mb-5 center-div">
                 <h1 style="font-weight: lighter">Login</h1>
               </div>
-              <form>
+              <form [formGroup]="formLogin">
                 <div class="form-group mb-3">
-                  <input id="inputEmail" type="email" placeholder="Your email" required="" autofocus=""
+                  <input id="inputUsername" formControlName="username" type="text" placeholder="Your username"
                          class="form-control rounded-pill border-0 shadow-sm px-4">
                 </div>
                 <div class="form-group mb-3">
-                  <input id="inputPassword" type="password" placeholder="Password" required=""
+                  <input id="inputPassword" type="password" placeholder="Password" formControlName="password"
                          class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
                 </div>
                 <div class="custom-control custom-checkbox mb-3">
@@ -29,7 +28,8 @@
                   <label for="customCheck1" class="custom-control-label">Remember.</label>
                 </div>
                 <div class="center-div">
-                  <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
+                  <button type="submit" (click)="submitLogin()"
+                          class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
                     Login
                   </button>
                 </div>
@@ -45,9 +45,7 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 </div>

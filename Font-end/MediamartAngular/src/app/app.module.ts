@@ -15,6 +15,9 @@ import { ShopGridComponent } from './shop-grid/shop-grid.component';
 import { ContractComponent } from './contract/contract.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {BasicAuthHtppInterceptorService} from './service/basic-auth-htpp-interceptor.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,9 +36,19 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
+  providers: [
+    {
+      provide: APP_BASE_HREF, useValue: '/'
+    },
+    {
+      provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

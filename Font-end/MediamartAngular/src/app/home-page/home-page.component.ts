@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {ScriptLoaderService} from '../service/script-loader.service';
 declare var $: any;
 
 @Component({
@@ -6,10 +7,22 @@ declare var $: any;
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit {
-  constructor() {
+@HostListener('unloaded')
+export class HomePageComponent implements OnInit, OnDestroy {
+  constructor(private scriptLoaderService : ScriptLoaderService) {
+    // this.scriptLoaderService.load('assets/js/main-index.js').subscribe();
   }
 
   ngOnInit(): void {
+    $(window).on('loaded', function () {
+      console.log('ready...');
+    })
+    $(window).on('load', function () {
+      console.log('loading...');
+    });
+  }
+
+  ngOnDestroy(): void {
+    console.log('Cleared');
   }
 }
